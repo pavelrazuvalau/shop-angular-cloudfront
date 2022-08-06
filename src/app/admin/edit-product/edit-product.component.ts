@@ -44,6 +44,9 @@ export class EditProductComponent implements OnInit, OnDestroy {
   get titleCtrl(): AbstractControl {
     return this.form.get('title') as AbstractControl;
   }
+  get imageUrlCtrl(): AbstractControl {
+    return this.form.get('imageUrl') as AbstractControl;
+  }
 
   private readonly onDestroy$: Subject<void> = new Subject();
 
@@ -59,6 +62,7 @@ export class EditProductComponent implements OnInit, OnDestroy {
       description: ['', Validators.required],
       price: ['', Validators.required],
       count: ['', Validators.required],
+      imageUrl: ['', Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')],
     });
   }
 
